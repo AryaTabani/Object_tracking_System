@@ -1,13 +1,16 @@
 import cv2
 import argparse
 
-def create_tracker(tracker_type):
 
+def create_tracker(tracker_type):
     if tracker_type == 'CSRT':
-        return cv2.TrackerCSRT_create()
+
+        return cv2.legacy.TrackerCSRT_create()
     elif tracker_type == 'KCF':
-        return cv2.TrackerKCF_create()
+
+        return cv2.legacy.TrackerKCF_create()
     elif tracker_type == 'MOSSE':
+
         return cv2.legacy.TrackerMOSSE_create()
     else:
         raise ValueError(f"Unknown tracker type: {tracker_type}")
@@ -28,6 +31,7 @@ if __name__ == '__main__':
     if not ok:
         print("Cannot read video file")
         exit()
+
     bbox = cv2.selectROI("Select Object", frame, False)
     cv2.destroyWindow("Select Object")
 
@@ -54,7 +58,7 @@ if __name__ == '__main__':
 
         cv2.imshow("Tracking", frame)
 
-        if cv2.waitKey(1) & 0xFF == 27:  
+        if cv2.waitKey(1) & 0xFF == 27:
             break
 
     video.release()
