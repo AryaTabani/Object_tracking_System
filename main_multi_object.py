@@ -3,7 +3,7 @@ import argparse
 import random
 from detector_multi import detect_multiple_objects
 from baseline_trackers import create_tracker
-from optical_flow_tracker import OpticalFlowTracker
+from ultimate_tracker import FFTTracker
 
 
 def main(args):
@@ -88,7 +88,7 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Multi-object tracking system.")
-    parser.add_argument("--video", type=str, default="videos/person4.mp4", help="Path to the input video.")
+    parser.add_argument("--video", type=str, default="videos/person2.mp4", help="Path to the input video.")
     parser.add_argument("--tracker", type=str, default="KCF", help="Tracker type: CSRT, KCF, MOSSE, CUSTOM.")
     parser.add_argument("--target_class", type=str, default="person",
                         help="The object class to track (e.g., 'person', 'car').")
