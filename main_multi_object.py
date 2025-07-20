@@ -3,7 +3,7 @@ import argparse
 import random
 from detector_multi import detect_multiple_objects
 from baseline_trackers import create_tracker
-from ultimate_tracker import FFTTracker
+from deep_kalman_tracker import FFTTracker
 
 
 def main(args):
