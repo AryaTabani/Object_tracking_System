@@ -5,8 +5,7 @@ import cv2
 from baseline_trackers import create_tracker
 from detector import detect_initial_object
 from baseline_trackers import create_tracker
-from optical_flow_tracker import OpticalFlowTracker
-
+from CustomTracker import CsrtKalmanTracker # Import the new tracker
 def main(args):
     video = cv2.VideoCapture(args.video)
     if not video.isOpened():
@@ -33,7 +32,7 @@ def main(args):
         if not bbox[2] or not bbox[3]: return
 
     if args.tracker == 'CUSTOM':
-        tracker = OpticalFlowTracker()
+        tracker = CsrtKalmanTracker()
     else:
         tracker = create_tracker(args.tracker)
 
@@ -86,7 +85,7 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="End-to-end object tracking system.")
     parser.add_argument("--video", type=str, default="videos/person3.mp4", help="Path to the input video.")
-    parser.add_argument("--tracker", type=str, default="CUSTOM", help="Tracker type: CSRT, KCF, MOSSE, CUSTOM.")
+    parser.add_argument("--tracker", type=str, default="KCF", help="Tracker type: CSRT, KCF, MOSSE, CUSTOM.")
     parser.add_argument("--target_class", type=str, default="person",
                         help="The object class to track (e.g., 'person', 'car').")
 
