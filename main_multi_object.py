@@ -3,7 +3,7 @@ import argparse
 import random
 from detector_multi import detect_multiple_objects
 from baseline_trackers import create_tracker
-from CustomTracker import FFTTracker
+
 
 
 def main(args):
